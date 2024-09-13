@@ -1,0 +1,55 @@
+{% extends 'User/base/base.html' %}
+{% load static %}
+
+{% block title %}AI Services Dashboard{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <h1>Dashboard</h1>
+    
+    <div class="user-info">
+        <p>Welcome, {{ user.first_name }} {{ user.last_name }}!</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Date Joined: {{ user.date_joined|date:"M. d, Y, g:i a" }}</p>
+    </div>
+
+    <div class="ai-services-grid">
+        <div class="service-card">
+            <h2>Text Summarization</h2>
+            <p>Summarize long documents quickly and efficiently.</p>
+            <a href="{% url 'text_summarization' %}" class="service-link">Use Service</a>
+        </div>
+        <div class="service-card">
+            <h2>Brain Tumor Detection</h2>
+            <p>Analyze brain scans to detect potential tumors.</p>
+            <a href="{% url 'brain_tumor' %}" class="service-link">Use Service</a>
+        </div>
+        <div class="service-card">
+            <h2>Diabetes Detection</h2>
+            <p>Analyze blood test results to predict diabetes risk.</p>
+            <a href="{% url 'diabetes' %}" class="service-link">Use Service</a>
+        </div>
+        <div class="service-card">
+            <h2>Heart Disease Analysis</h2>
+            <p>Evaluate risk factors for heart disease.</p>
+            <a href="{% url 'heart' %}" class="service-link">Use Service</a>
+        </div>
+        <div class="service-card">
+            <h2>Pneumonia Detection</h2>
+            <p>Analyze chest X-rays for pneumonia indicators.</p>
+            <a href="{% url 'pneumo' %}" class="service-link">Use Service</a>
+        </div>
+        <div class="service-card">
+            <h2>Recommendation System</h2>
+            <p>Get personalized medical recommendations.</p>
+            <a href="{% url 'recommender' %}" class="service-link">Use Service</a>
+        </div>
+        <div class="service-card">
+            <h2>Nearest Hospitals</h2>
+            <p>Find nearby hospitals using our integrated map.</p>
+            <a href="{% url 'nearest_hospitals' %}" class="service-link">Use Service</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

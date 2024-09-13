@@ -1,0 +1,24 @@
+{% extends 'User/base/base.html' %}
+{% load static %}
+
+{% block title %}Brain Tumor Detection{% endblock %}
+
+{% block content %}
+<div class="bg-gray-100 min-h-screen flex flex-col items-center justify-center p-6">
+    <div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-lg">
+        <h2 class="text-3xl font-semibold mb-4 text-gray-800">Prediction Result</h2>
+        
+        <div class="bg-gray-200 p-4 rounded-lg mb-4">
+            <p class="text-xl font-medium text-gray-700">Prediction: <h1><span class="font-bold text-blue-600">{{ prediction }}</span></h1> </p>
+        </div>
+        
+        {% if file_url %}
+            <div class="flex justify-center">
+                <img src="{{ file_url }}" alt="Uploaded Image" class="max-w-full h-auto rounded-lg shadow-md">
+            </div>
+        {% else %}
+            <p class="text-red-500 text-center">No image available to display.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

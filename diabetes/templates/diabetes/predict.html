@@ -1,0 +1,39 @@
+{% extends 'User/base/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    {% block content %}
+    <div class="container">
+        <h1>Diabetes Prediction</h1>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.errors %}
+                        <span class="error">{{ field.errors }}</span>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button type="submit">Predict</button>
+        </form>
+        {% if result %}
+            <div class="result">
+                <h1>Prediction Result</h1>
+                <p>{{ result }}</p>
+            </div>
+            <a href="{% url 'predict_diabetes' %}">Predict Again</a>
+        {% endif %}
+    </div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'User/base/base.html' %}
+{% load static %}
+
+{% block title %}Brain Tumor Detection{% endblock %}
+
+{% block content %}
+<div class="bg-gray-900 text-gray-100 flex flex-col items-center justify-center min-h-screen py-8 px-4">
+    <h1 class="text-4xl font-extrabold mb-4 text-center">Brain Tumor Detection</h1>
+
+    <p class="text-xl mb-6 text-center">Upload an image to get a prediction</p>
+
+    <form action="{% url 'braintumor' %}" method="post" enctype="multipart/form-data" class="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-lg">
+        {% csrf_token %}
+        <div class="mb-6">
+            <label for="image" class="block text-lg font-medium mb-2">Select an Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required class="w-full px-4 py-3 border border-gray-600 rounded-md bg-gray-700 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600 transition duration-150 ease-in-out">
+        </div>
+        <button type="submit" class="w-full bg-blue-600 text-white py-3 px-5 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out">Submit</button>
+    </form>
+
+    {% if error %}
+        <p class="text-red-400 mt-6 text-center">{{ error }}</p>
+    {% endif %}
+</div>
+{% endblock %}

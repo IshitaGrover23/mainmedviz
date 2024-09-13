@@ -1,0 +1,81 @@
+{% extends 'User/base/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heart Disease Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: inline-block;
+            width: 200px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 200px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    {% block content %}
+    <h2>Heart disease analysis</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label>Age:</label><input type="text" name="age"><br>
+        <label>Sex:</label><input type="text" name="sex"><br>
+        <label>Chest Pain Type:</label><input type="text" name="cp"><br>
+        <label>Resting Blood Pressure:</label><input type="text" name="trestbps"><br>
+        <label>Cholesterol:</label><input type="text" name="chol"><br>
+        <label>Fasting Blood Sugar:</label><input type="text" name="fbs"><br>
+        <label>Resting ECG Results:</label><input type="text" name="restecg"><br>
+        <label>Maximum Heart Rate Achieved:</label><input type="text" name="thalach"><br>
+        <label>Exercise Induced Angina:</label><input type="text" name="exang"><br>
+        <label>Oldpeak:</label><input type="text" name="oldpeak"><br>
+        <label>Slope:</label><input type="text" name="slope"><br>
+        <label>Number of Major Vessels:</label><input type="text" name="ca"><br>
+        <label>Thal:</label><input type="text" name="thal"><br>
+        <button type="submit">Predict</button>
+    </form>
+</body>
+</html>
+{% endblock %}

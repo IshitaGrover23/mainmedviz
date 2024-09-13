@@ -1,0 +1,103 @@
+{% extends 'User/base/base.html' %}
+{% load static %}
+
+{% block title %}Health Center{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <h1>Recommendation System</h1>
+    
+    <div class="input-container">
+        <h2>Enter Symptoms or Use Speech Recognition:</h2>
+        <input type="text" id="symptoms-input" placeholder="Type symptoms such as headache, fever, cough, etc.">
+        <button id="speech-btn">Start Speech Recognition</button>
+        <button id="predict-btn">Predict</button>
+    </div>
+    
+    <div id="prediction-output" class="result-section" style="display: none;">
+        <h2>AI Predictions</h2>
+        <div id="predictions-container"></div>
+    </div>
+</div>
+
+<script>
+    const csrftoken = getCookie('csrftoken');
+    
+    document.getElementById('predict-btn').addEventListener('click', predictSymptoms);
+    document.getElementById('speech-btn').addEventListener('click', startSpeechRecognition);
+    
+    function predictSymptoms() {
+        const symptoms = document.getElementById('symptoms-input').value;
+        if (!symptoms) {
+            alert('Please enter symptoms');
+            return;
+        }
+        
+        fetch('/recommender/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken,
+            },
+            body: JSON.stringify({text_input: symptoms}),
+        })
+        .then(response => response.json())
+        .then(data => {
+            displayResults(data.predictions);
+        })
+        .catch(error => console.error('Error:', error));
+    }
+    
+    function startSpeechRecognition() {
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.lang = 'en-US';
+        recognition.start();
+        
+        recognition.onresult = function(event) {
+            const transcript = event.results[0][0].transcript;
+            document.getElementById('symptoms-input').value = transcript;
+            predictSymptoms(); // Automatically predict after speech recognition
+        };
+        
+        recognition.onerror = function(event) {
+            console.error('Speech recognition error', event.error);
+        };
+    }
+    
+    function displayResults(predictions) {
+        const outputDiv = document.getElementById('prediction-output');
+        const predictionsContainer = document.getElementById('predictions-container');
+        outputDiv.style.display = 'block';
+        predictionsContainer.innerHTML = '';
+        
+        predictions.forEach((prediction, index) => {
+            const predictionDiv = document.createElement('div');
+            predictionDiv.className = 'prediction-item';
+            predictionDiv.innerHTML = `
+                <h3>Prediction ${index + 1}: ${prediction.disease}</h3>
+                <p><strong>Description:</strong> ${prediction.description}</p>
+                <p><strong>Precaution:</strong> ${prediction.precaution}</p>
+                <p><strong>Medications:</strong> ${prediction.medications}</p>
+                <p><strong>Workouts:</strong> ${prediction.workouts}</p>
+                <p><strong>Diets:</strong> ${prediction.diets}</p>
+            `;
+            predictionsContainer.appendChild(predictionDiv);
+        });
+    }
+    
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+</script>
+{% endblock %}

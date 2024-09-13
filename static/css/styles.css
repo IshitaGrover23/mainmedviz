@@ -1,0 +1,119 @@
+.recommendation-form {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.recommendation-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.recommendation-form button {
+    padding: 10px 20px;
+    margin-right: 10px;
+}
+
+.ai-prediction {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.prediction-results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.result-item {
+    flex-basis: 30%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.result-item:nth-child(1) { background-color: #ffa500; }
+.result-item:nth-child(2) { background-color: #4169e1; }
+.result-item:nth-child(3) { background-color: #ff69b4; }
+.result-item:nth-child(4) { background-color: #ff6347; }
+.result-item:nth-child(5) { background-color: #90ee90; }
+.result-item:nth-child(6) { background-color: #ffd700; }
+
+.main-container {
+    padding: 20px;
+    color: #fff;
+    background-color: #1e1e1e;
+}
+
+h1, h2 {
+    color: #fff;
+}
+
+.symptom-input {
+    margin-bottom: 20px;
+}
+
+.symptom-input input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+}
+
+.symptom-input button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.prediction-results {
+    background-color: #2a2a2a;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.result-item {
+    background-color: #333;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.result-item h3 {
+    margin-top: 0;
+    color: #4CAF50;
+}
+
+/* Sidebar adjustments */
+.sidebar {
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+.sidebar-list-item a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px 15px;
+}
+
+.sidebar-list-item a:hover {
+    background-color: #333;
+}
+
+.sidebar-list-item.active a {
+    background-color: #4CAF50;
+}

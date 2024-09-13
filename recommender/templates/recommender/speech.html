@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to Text and Recommendation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        #speech-form {
+            margin-bottom: 20px;
+        }
+        #transcription-output, #recommendations-output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .prediction-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Speech to Text and Recommendation</h1>
+    <form id="speech-form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="audio" accept="audio/*">
+        <button type="submit">Upload and Analyze</button>
+    </form>
+    <div id="transcription-output"></div>
+    <div id="recommendations-output"></div>
+    
+    <script>
+        document.getElementById('speech-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            fetch('/recommender/speech/', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('transcription-output').innerHTML = `<h2>Transcription:</h2><p>${data.text}</p>`;
+                displayRecommendations(data.predictions);
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        function displayRecommendations(predictions) {
+            const recommendationsDiv = document.getElementById('recommendations-output');
+            recommendationsDiv.innerHTML = '<h2>Recommendations:</h2>';
+            
+            predictions.forEach((prediction, index) => {
+                const predictionDiv = document.createElement('div');
+                predictionDiv.className = 'prediction-item';
+                predictionDiv.innerHTML = `
+                    <h3>Prediction ${index + 1}: ${prediction.disease}</h3>
+                    <p><strong>Description:</strong> ${prediction.description}</p>
+                    <p><strong>Precaution:</strong> ${prediction.precaution}</p>
+                    <p><strong>Medications:</strong> ${prediction.medications}</p>
+                    <p><strong>Workouts:</strong> ${prediction.workouts}</p>
+                    <p><strong>Diets:</strong> ${prediction.diets}</p>
+                `;
+                recommendationsDiv.appendChild(predictionDiv);
+            });
+        }
+    </script>
+</body>
+</html>
