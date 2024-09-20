@@ -22,7 +22,6 @@ urlpatterns = [
     path('heart/', include('heart.urls')),
     path('diabetes/', include('diabetes.urls')),
     path('brain', include('predictor.urls')),  
-    path('pneumo/', include('pneumoapp.urls')),
 ]
 
 if settings.DEBUG:  # Only serve media files in development

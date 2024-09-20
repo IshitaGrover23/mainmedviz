@@ -1,12 +1,17 @@
-import fitz  # PyMuPDF
+import fitz  
 import re
 import spacy
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.cluster import KMeans
+from transformers import BartTokenizer, BartForConditionalGeneration
 
 # Load spaCy model for named entity recognition
 nlp = spacy.load("en_core_web_sm")
+
+# Load BART model and tokenizer
+tokenizer = BartTokenizer.from_pretrained('facebook/bart-large-cnn')
+model = BartForConditionalGeneration.from_pretrained('facebook/bart-large-cnn')
 
 def extract_text_from_pdf(pdf_file):
     try:

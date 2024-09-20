@@ -35,13 +35,10 @@
       </div>
       
       <div class="header-right">
-        <span class="material-icons-outlined" id="notifications-icon" aria-label="Notifications">notifications</span>
-        <span class="material-icons-outlined" id="email-icon" aria-label="Email">email</span>
         <div class="profile-dropdown">
           <span class="material-icons-outlined" id="account-icon" aria-label="Account" aria-haspopup="true">account_circle</span>
           <div class="dropdown-menu" id="dropdown-menu" aria-hidden="true">
             <a href="{% url 'user_profile' %}">Profile</a>
-            <a href="{% url 'settings' %}">Settings</a>
             <a href="{% url 'user_logout' %}">Logout</a>
           </div>
         </div>
@@ -62,7 +59,7 @@
       <ul class="sidebar-list">
         <li class="sidebar-list-item">
           <a href="{% url 'text_summarization' %}">
-            <span class="material-icons-outlined">text_snippet</span> Text Summarization
+            <span class="material-icons-outlined">text_snippet</span> Medical Report Summarization
           </a>
         </li>
         <li class="sidebar-list-item">
@@ -83,11 +80,6 @@
         <li class="sidebar-list-item">
           <a href="{% url 'braintumor' %}">
             <span class="material-icons-outlined">psychology</span> Brain Tumor Detection
-          </a>
-        </li>
-        <li class="sidebar-list-item">
-          <a href="{% url 'pneumo' %}">
-            <span class="material-icons-outlined">health_and_safety</span> Pneumonia Detection
           </a>
         </li>
     

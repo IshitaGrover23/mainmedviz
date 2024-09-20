@@ -311,7 +311,79 @@ symptom_prediction_mapping = {
         "medications": "Bronchodilators, inhaled corticosteroids, or oxygen therapy as needed.",
         "workouts": "Breathing exercises and light aerobic activity can help improve lung function.",
         "diets": "A balanced diet with anti-inflammatory foods like fruits, vegetables, and omega-3-rich foods."
-    }
+    },
+    "loss of appetite": {
+        "disease": "Anorexia Nervosa",
+        "description": "An eating disorder characterized by an abnormally low body weight, intense fear of gaining weight, and a distorted perception of weight.",
+        "precaution": "Seek professional help, monitor eating habits, and support emotional well-being.",
+        "medications": "Antidepressants or antipsychotic medications may be prescribed in some cases.",
+        "workouts": "Light exercise under professional guidance, focusing on body recovery and mental health.",
+        "diets": "Nutritionally balanced meals, with professional guidance to restore healthy eating patterns.",
+    },
+    "swollen glands": {
+        "disease": "Lymphadenitis",
+        "description": "Swollen lymph nodes, often due to infection, inflammation, or certain diseases.",
+        "precaution": "Monitor symptoms, rest, and seek medical advice if swelling persists or is painful.",
+        "medications": "Antibiotics or anti-inflammatory medications may be prescribed, depending on the cause.",
+        "workouts": "Rest is recommended until swelling subsides.",
+        "diets": "No specific dietary changes, but maintaining hydration and a healthy immune-boosting diet is beneficial."
+    },
+    "burning sensation": {
+        "disease": "Gastroesophageal Reflux Disease (GERD)",
+        "description": "A condition where stomach acid frequently flows back into the tube connecting your mouth and stomach, causing heartburn and a burning sensation.",
+        "precaution": "Avoid spicy and fatty foods, eat smaller meals, and avoid lying down after eating.",
+        "medications": "Antacids, H2 blockers, or proton pump inhibitors as prescribed by a doctor.",
+        "workouts": "Moderate, low-impact exercise like walking or cycling may help reduce symptoms.",
+        "diets": "Avoid trigger foods such as spicy foods, caffeine, and alcohol. Eat smaller, more frequent meals.",
+    },
+    "numbness": {
+        "disease": "Peripheral Neuropathy",
+        "description": "Damage to the peripheral nerves, often causing weakness, numbness, and pain, typically in the hands and feet.",
+        "precaution": "Manage underlying conditions like diabetes, avoid repetitive movements, and take breaks during physical activity.",
+        "medications": "Pain relievers, anticonvulsants, or antidepressants may be prescribed.",
+        "workouts": "Low-impact exercises like swimming, cycling, or walking to maintain circulation and mobility.",
+        "diets": "A diet rich in vitamins B6 and B12, and folate can support nerve health.",
+    },
+    "swelling in legs": {
+        "disease": "Deep Vein Thrombosis (DVT)",
+        "description": "A blood clot that forms in a deep vein, usually in the legs, leading to swelling and discomfort.",
+        "precaution": "Avoid prolonged periods of sitting or standing, stay active, and wear compression stockings if prescribed.",
+        "medications": "Anticoagulants (blood thinners) may be prescribed to prevent clot growth.",
+        "workouts": "Light walking or gentle stretching to improve circulation, but avoid vigorous exercise until cleared by a doctor.",
+        "diets": "Stay hydrated and follow a heart-healthy diet, including foods low in sodium.",
+    },
+    "itching": {
+        "disease": "Eczema (Atopic Dermatitis)",
+        "description": "A condition that makes your skin red and itchy, commonly in children but also seen in adults.",
+        "precaution": "Keep the skin moisturized, avoid harsh soaps, and wear breathable fabrics.",
+        "medications": "Topical corticosteroids, antihistamines, or immune-modulating creams may be recommended.",
+        "workouts": "Avoid activities that cause excessive sweating or skin irritation.",
+        "diets": "A balanced diet; some individuals may find relief by avoiding specific allergens.",
+    },
+    "yellowing of skin": {
+        "disease": "Jaundice",
+        "description": "A condition characterized by yellowing of the skin and eyes due to high bilirubin levels, often related to liver issues.",
+        "precaution": "Monitor liver health, avoid alcohol, and manage any underlying conditions.",
+        "medications": "Depends on the underlying cause, which may include antibiotics, antiviral medications, or other treatments.",
+        "workouts": "Rest and avoid strenuous activity until the underlying condition is treated.",
+        "diets": "A liver-friendly diet, including low-fat foods, fruits, vegetables, and lean proteins.",
+    },
+    "frequent infections": {
+        "disease": "Immunodeficiency Disorder",
+        "description": "A condition where the immune system's ability to fight infectious diseases is compromised or entirely absent.",
+        "precaution": "Take preventive measures against infections, stay vaccinated, and practice good hygiene.",
+        "medications": "Immunoglobulin therapy or other treatments based on the specific type of immunodeficiency.",
+        "workouts": "Light exercises to maintain overall health, but avoid exposure to pathogens.",
+        "diets": "A balanced diet rich in vitamins and minerals to support immune function.",
+    },
+    "loss of coordination": {
+        "disease": "Multiple Sclerosis (MS)",
+        "description": "A disease in which the immune system eats away at the protective covering of nerves, disrupting communication between the brain and body.",
+        "precaution": "Manage stress, stay active within limits, and follow medical advice.",
+        "medications": "Disease-modifying therapies, corticosteroids, or muscle relaxants as prescribed by a doctor.",
+        "workouts": "Low-impact activities such as swimming or yoga can help maintain mobility and strength.",
+        "diets": "A diet rich in omega-3s, fruits, and vegetables to help reduce inflammation.",
+    },
 }
 
 @csrf_exempt
